@@ -1,4 +1,4 @@
 SELECT ?v0 WHERE {
-	?v0 <http://schema.org/birthDate> "1988-09-24" . ?v0 <http://db.uwaterloo.ca/~galuc/wsdbm/follows>	<http://db.uwaterloo.ca/~galuc/wsdbm/User240>}
+	?v0 <http://schema.org/birthDate> "1988-09-24" . ?v0 <http://db.uwaterloo.ca/~galuc/wsdbm/follows>	<http://db.uwaterloo.ca/~galuc/wsdbm/User240>. ?v0 <http://schema.org/eligibleRegion> <http://db.uwaterloo.ca/~galuc/wsdbm/Country232>}
 
 

@@ -63,20 +63,37 @@ final class Main {
 		Map<String, Integer> myDict = MyRDFHandler.getMyDictionary();
 		List<StatementPattern> patterns = StatementPatternCollector.process(query.getTupleExpr());
 
-		Integer o1 = myDict.get(patterns.get(0).getObjectVar().getValue().toString());
-		Integer p1 = myDict.get(patterns.get(0).getPredicateVar().getValue().toString());
-		s1.addAll(OPS.get(o1).get(p1));
-
-		Integer o2 = myDict.get(patterns.get(1).getObjectVar().getValue().toString());
-		Integer p2 = myDict.get(patterns.get(1).getPredicateVar().getValue().toString());
-		s2.addAll(OPS.get(o2).get(p2));
-
-		System.out.println("L'ensemble de s1:"+s1);
-		System.out.println("L'ensemble de s2:"+s2);
-
-		s2.retainAll(s1);
-
+		/**
+		 * n branches
+		 */
+		for (int i = 1; i< patterns.size(); i++) {
+			Integer o = myDict.get(patterns.get(i).getObjectVar().getValue().toString());
+			Integer p = myDict.get(patterns.get(i).getPredicateVar().getValue().toString());
+			s1.retainAll(OPS.get(o).get(p));
+			s2.addAll(OPS.get(o).get(p));
+			s1 = s2;
+		}
 		System.out.println("Le résultat de requête est:"+s2);
+
+
+
+		/**
+		 * 2 branches
+		 */
+//		Integer o1 = myDict.get(patterns.get(0).getObjectVar().getValue().toString());
+//		Integer p1 = myDict.get(patterns.get(0).getPredicateVar().getValue().toString());
+//		s1.addAll(OPS.get(o1).get(p1));
+//
+//		Integer o2 = myDict.get(patterns.get(1).getObjectVar().getValue().toString());
+//		Integer p2 = myDict.get(patterns.get(1).getPredicateVar().getValue().toString());
+//		s2.addAll(OPS.get(o2).get(p2));
+//
+//		System.out.println("L'ensemble de s1:"+s1);
+//		System.out.println("L'ensemble de s2:"+s2);
+//
+//		s2.retainAll(s1);
+//
+//		System.out.println("Le résultat de requête est:"+s2);
 
 	}
 
@@ -104,7 +121,7 @@ final class Main {
 	private static void parseQueries() throws FileNotFoundException, IOException {
 		/**
 		 * Try-with-resources
-		 * 
+		 *
 		 * @see <a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html">Try-with-resources</a>
 		 */
 		/*
@@ -117,10 +134,10 @@ final class Main {
 			StringBuilder queryString = new StringBuilder();
 
 			while (lineIterator.hasNext())
-			/*
-			 * On stocke plusieurs lignes jusqu'à ce que l'une d'entre elles se termine par un '}'
-			 * On considère alors que c'est la fin d'une requête
-			 */
+				/*
+				 * On stocke plusieurs lignes jusqu'à ce que l'une d'entre elles se termine par un '}'
+				 * On considère alors que c'est la fin d'une requête
+				 */
 			{
 				String line = lineIterator.next();
 				queryString.append(line);
@@ -163,14 +180,6 @@ final class Main {
 			// Parsing et traitement de chaque triple par le handler
 			rdfParser.parse(dataReader, baseURI);
 		}
-
-
-
-
-
-
-
-
 
 	}
 

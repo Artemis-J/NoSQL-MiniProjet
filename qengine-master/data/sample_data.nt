@@ -11,3 +11,6 @@
 <http://db.uwaterloo.ca/~galuc/wsdbm/User21> <http://db.uwaterloo.ca/~galuc/wsdbm/follows> <http://db.uwaterloo.ca/~galuc/wsdbm/User240> .
 <http://db.uwaterloo.ca/~galuc/wsdbm/User81> <http://db.uwaterloo.ca/~galuc/wsdbm/follows> <http://db.uwaterloo.ca/~galuc/wsdbm/User240> .
 <http://db.uwaterloo.ca/~galuc/wsdbm/User90> <http://db.uwaterloo.ca/~galuc/wsdbm/follows> <http://db.uwaterloo.ca/~galuc/wsdbm/User240> .
+<http://db.uwaterloo.ca/~galuc/wsdbm/User1> <http://schema.org/eligibleRegion> <http://db.uwaterloo.ca/~galuc/wsdbm/Country232>.
+<http://db.uwaterloo.ca/~galuc/wsdbm/User5> <http://schema.org/eligibleRegion> <http://db.uwaterloo.ca/~galuc/wsdbm/Country232>.
+<http://db.uwaterloo.ca/~galuc/wsdbm/User90> <http://schema.org/eligibleRegion> <http://db.uwaterloo.ca/~galuc/wsdbm/Country232>.
